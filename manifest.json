@@ -1,0 +1,16 @@
+{
+  "name": "치매예방을 위한 어르신 스도쿠",
+  "short_name": "어르신 스도쿠",
+  "description": "광고 없는 스도쿠 게임",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fdfdfb",
+  "theme_color": "#2c5f8a",
+  "lang": "ko",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

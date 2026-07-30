@@ -1,0 +1,336 @@
+:root {
+  --font-scale: 1;
+  --color-bg: #fdfdfb;
+  --color-text: #1a1a1a;
+  --color-primary: #2c5f8a;
+  --color-primary-dark: #1d4260;
+  --color-easy: #2e7d5b;
+  --color-medium: #b5780a;
+  --color-hard: #b23b3b;
+  --color-cell-bg: #ffffff;
+  --color-cell-given: #e7ecf1;
+  --color-selected: #fff2a8;
+  --color-peer: #e7f1fb;
+  --color-samevalue: #cfe6ff;
+  --color-error: #c0392b;
+  --color-border-strong: #22344a;
+  --color-border-light: #b9c3cd;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  font-size: calc(16px * var(--font-scale));
+  overscroll-behavior: none;
+  user-select: none;
+}
+
+body.large-text {
+  --font-scale: 1.28;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px 32px;
+}
+
+/* ---------- 홈 화면 ---------- */
+
+.app-title {
+  font-size: calc(1.9rem * var(--font-scale) / 1);
+  line-height: 1.35;
+  margin: 24px 0 4px;
+  color: var(--color-primary-dark);
+  text-align: center;
+}
+
+.app-subtitle {
+  font-size: calc(1.1rem * var(--font-scale) / 1);
+  color: #555;
+  margin: 0 0 28px;
+  text-align: center;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  padding: 20px 16px;
+  margin: 10px 0;
+  font-size: calc(1.4rem * var(--font-scale) / 1);
+  font-weight: 700;
+  border: none;
+  border-radius: 16px;
+  color: #fff;
+  background: var(--color-primary);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.15);
+  line-height: 1.3;
+}
+
+.btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.btn-sub {
+  font-size: calc(1rem * var(--font-scale) / 1);
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.btn-continue {
+  background: var(--color-primary-dark);
+}
+
+.difficulty-list {
+  width: 100%;
+  max-width: 420px;
+}
+
+.btn-difficulty {
+  font-size: calc(1.6rem * var(--font-scale) / 1);
+  padding: 24px 16px;
+}
+
+.btn-easy { background: var(--color-easy); }
+.btn-medium { background: var(--color-medium); }
+.btn-hard { background: var(--color-hard); }
+
+.btn-outline {
+  background: #fff;
+  color: var(--color-primary-dark);
+  border: 3px solid var(--color-primary-dark);
+  box-shadow: none;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--color-primary-dark);
+  font-size: calc(1.1rem * var(--font-scale) / 1);
+  text-decoration: underline;
+  padding: 12px;
+}
+
+.how-to-toggle {
+  margin-top: 8px;
+}
+
+/* ---------- 게임 방법 화면 ---------- */
+
+.howto-list {
+  max-width: 480px;
+  font-size: calc(1.2rem * var(--font-scale) / 1);
+  line-height: 1.9;
+  padding-left: 1.4em;
+}
+
+/* ---------- 게임 화면 ---------- */
+
+#screen-game {
+  padding: 12px 10px 20px;
+  justify-content: flex-start;
+}
+
+.game-topbar {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap: 6px;
+}
+
+.icon-btn {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: calc(1rem * var(--font-scale) / 1);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.game-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.difficulty-tag {
+  font-size: calc(1rem * var(--font-scale) / 1);
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.timer {
+  font-size: calc(1.1rem * var(--font-scale) / 1);
+  font-variant-numeric: tabular-nums;
+  color: #444;
+}
+
+.board {
+  width: min(94vw, 520px);
+  aspect-ratio: 1 / 1;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  background: var(--color-border-strong);
+  border: 3px solid var(--color-border-strong);
+  border-radius: 8px;
+  overflow: hidden;
+  gap: 1px;
+  margin-bottom: 14px;
+}
+
+.cell {
+  background: var(--color-cell-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-size: calc(min(4.4vw, 26px) * var(--font-scale));
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+.cell.given {
+  background: var(--color-cell-given);
+  color: #111;
+  font-weight: 800;
+  box-shadow: inset 0 0 0 2px rgba(29, 52, 74, 0.28);
+}
+
+.cell.selected {
+  background: var(--color-selected) !important;
+}
+
+.cell.peer {
+  background: var(--color-peer);
+}
+
+.cell.samevalue {
+  background: var(--color-samevalue);
+}
+
+.cell.error {
+  color: var(--color-error) !important;
+}
+
+.cell.flash-complete {
+  background: var(--color-easy) !important;
+  color: #fff !important;
+}
+
+.cell.border-right {
+  border-right: 3px solid var(--color-border-strong);
+}
+
+.cell.border-bottom {
+  border-bottom: 3px solid var(--color-border-strong);
+}
+
+.toolbar {
+  width: min(94vw, 520px);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tool-btn {
+  background: #fff;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary-dark);
+  border-radius: 12px;
+  padding: 10px 4px;
+  font-size: calc(0.95rem * var(--font-scale) / 1);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+#hint-count {
+  font-weight: 800;
+}
+
+.numpad {
+  width: min(96vw, 560px);
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 6px;
+}
+
+.num-btn {
+  height: calc(52px * var(--font-scale));
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: calc(1.3rem * var(--font-scale) / 1);
+  font-weight: 700;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.15);
+  padding: 0;
+}
+
+.num-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- 오버레이 ---------- */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 20px;
+}
+
+.overlay-box {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px 24px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+}
+
+.overlay-box h2 {
+  font-size: calc(1.6rem * var(--font-scale) / 1);
+  color: var(--color-primary-dark);
+  margin-top: 0;
+}
+
+.win-time {
+  font-size: calc(1.2rem * var(--font-scale) / 1);
+  margin-bottom: 20px;
+}
